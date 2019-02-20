@@ -84,9 +84,45 @@ example:(使用数据压缩卷容器，在每个阶段提供特定于环境的�
 4. docker run --name prodApp  --volumes-from prodConfig dockerinaction/ch4_polyapp
 
 
+## 网络
 
+- 协议      tcp/udp
+- 接口      ip
+- 端口      port
 
+### 接口
+- 本地环回接口
+- 以太网接口
 
+### 网络，NAT，端口转发
+
+### 本地虚拟网络
+
+### 网络容器原形
+- Closed容器
+  只能访问本地换回地址
+  > docker run --rm --net none alpine:latest ip addr
+
+- bridged容器
+> docker run --rm --net bridge alpine:latest ip addr
+
+### 配置dns
+- docker run -rm --hostname barker alpine:latest nslookup barker
+
+### 创建linux 网桥
+
+- Joined容器
+
+> docker run -d --name brady -net none alpine:latest nc -l 127.0.0.1:3333
+> docker run -it -net container:brady alpine:latest netstate -al
+
+- Open容器
+> docker run --rm --net host alpine:latest ip addr
+
+### 跨容器依赖
+
+1. 链接
+2. 
 
 
 
